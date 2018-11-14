@@ -1,0 +1,25 @@
+$bgcolor: rgba(97, 97, 135, 0.365);
+$maincolor: #30035c;
+
+body{
+    background-color: $bgcolor;
+    color: $maincolor;
+    font-size: 20px;
+}
+form {
+    width: 350px;
+}
+input {
+    width: 150px;
+}
+div {
+    display: flex;
+    justify-content: space-between;
+}
+p {
+    margin: 0;
+    color: red;
+}
+p.success {
+    color: green;
+}

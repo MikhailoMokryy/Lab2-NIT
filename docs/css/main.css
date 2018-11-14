@@ -1,0 +1,22 @@
+body {
+  background-color: rgba(97, 97, 135, 0.365);
+  color: #30035c;
+  font-size: 20px; }
+
+form {
+  width: 350px; }
+
+input {
+  width: 150px; }
+
+div {
+  display: flex;
+  justify-content: space-between; }
+
+p {
+  margin: 0;
+  color: red; }
+
+p.success {
+  color: green; }
+
