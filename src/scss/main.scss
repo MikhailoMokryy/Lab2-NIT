@@ -1,25 +1,30 @@
-$bgcolor: rgba(97, 97, 135, 0.365);
-$maincolor: #30035c;
+$bgcolor: rgb(109, 80, 133);
+$headercolor: #02341a;
+$color: #c0c0d2;
 
-body{
-    background-color: $bgcolor;
-    color: $maincolor;
-    font-size: 20px;
+
+*{
+  margin: 0;
+  padding: 0;
 }
-form {
-    width: 350px;
+
+
+
+.header{
+  background-color: $headercolor; 
+  color: $color;
+  padding: 5px 10px;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 100;
 }
-input {
-    width: 150px;
+
+.row{
+  padding: 10px;
+  margin: 5px auto;
+  background-color: $bgcolor; 
+ border: 2px solod black;
 }
-div {
-    display: flex;
-    justify-content: space-between;
-}
-p {
-    margin: 0;
-    color: red;
-}
-p.success {
-    color: green;
-}
+
+

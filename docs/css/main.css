@@ -1,22 +1,19 @@
-body {
-  background-color: rgba(97, 97, 135, 0.365);
-  color: #30035c;
-  font-size: 20px; }
-
-form {
-  width: 350px; }
-
-input {
-  width: 150px; }
-
-div {
-  display: flex;
-  justify-content: space-between; }
-
-p {
+* {
   margin: 0;
-  color: red; }
+  padding: 0; }
 
-p.success {
-  color: green; }
+.header {
+  background-color: #02341a;
+  color: #c0c0d2;
+  padding: 5px 10px;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 100; }
+
+.row {
+  padding: 10px;
+  margin: 5px auto;
+  background-color: #6d5085;
+  border: 2px solod black; }
 

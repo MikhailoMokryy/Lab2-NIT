@@ -7,6 +7,12 @@ module.exports = {
         path: path.resolve(__dirname, "docs"),
         filename: 'js/main.js',
     },
+    devServer: {
+		contentBase: path.join(__dirname, 'docs'),
+		compress: true,
+		port: 9000,
+		watchContentBase: true,
+	},
     
     module: {
         rules: [
