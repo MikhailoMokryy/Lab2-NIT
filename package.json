@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "watch": "webpack --watch",
-    "server": "webpack-dev-server --hot --open"
+    "start": "webpack-dev-server --hot --open"
   },
   "author": "Mokryy Mike",
   "license": "ISC",
@@ -29,6 +29,7 @@
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "bootstrap": "^4.1.3"
   }
 }
