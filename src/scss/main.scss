@@ -4,33 +4,28 @@ $color: #c0c0d2;
 
 
 *{
-  margin: 0;
-  padding: 0;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+   user-select: none;
+}
+
+.maincontainer {
+  position: absolute;
+  top: 100px;
+  display: flex;
+  margin: 0 auto;
 }
 
 .mycard_img{
-  height: 200px;
-  width: 250px;
-  margin:0 auto;
+ height: 250px;
+ object-fit: contain;
 }
 
-.header{
-  background-color: $headercolor; 
-  color: $color;
-  position: fixed;
-  width: 100%;
-  overflow: hidden;
-  z-index: 100;
-
+.card-text{
+  height: 250px;
+  overflow: scroll;
 }
 
-
-
-// .row{
-//   padding: 10px;
-//   margin: 5px auto;
-//   background-color: $bgcolor; 
-//  border: 2px solod black;
-// }
 
 
