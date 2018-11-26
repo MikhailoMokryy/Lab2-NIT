@@ -25,8 +25,8 @@ class Table extends React.PureComponent {
           <TableRow
                     key={i}
                     data = {item}
-                   isOpen = {this.state.openDescriptionId === item.id}
-                   onButtonClick = {this.handleClick.bind(this, item.id)}
+                    isOpen = {this.state.openDescriptionId === item.id}
+                    onButtonClick = {this.handleClick.bind(this, item.id)}
           />
       
       )
@@ -34,7 +34,7 @@ class Table extends React.PureComponent {
        return (
          
           <main role="main" className="container maincontainer">
-          <div className="row flex row justify-content-around align-content-center  align-items-stretch">
+          <div className="row flex justify-content-around align-content-center align-items-center">
              {shopElements}
           </div>
       </main>

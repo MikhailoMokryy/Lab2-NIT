@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react'
-
+import Cart from './Cart'
 
 class TableRow extends PureComponent {
    
@@ -8,39 +8,41 @@ class TableRow extends PureComponent {
 
 
       this.state = {
-          count: 0
+          count: 1
       }
   }
-
-  
 
     render() {
       const {data, isOpen, onButtonClick} = this.props
 
       let descrStr = data.description
       const desc = isOpen && <p className="card-text" style={{height: this.descrHeight(descrStr)}}>{descrStr}</p>
-       return (
-        
+
+      const price = this.hasSpecialPrice(data.special_price)?<h3><span class="badge badge-danger">{data.special_price} грн</span>
+      <h4><span class="badge badge-secondary "><del>{data.price} грн </del> </span></h4></h3>:<h3><span class="badge badge-secondary">{data.price} грн</span></h3>
+
+
+      //  <span class="badge badge-secondary"><del>{data.price}</del> </span>    
+      return ( 
           <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
- 
-             <div className="card">
- 
-                <img className="card-img-top mycard_img" src={data.image_url} alt="Card image cap" />
- 
+      
+             <div className="card">              
+                <img className="card-img-top mycard_img" src={data.image_url} alt="Card image cap" />              
                 <div className="card-body">
-                   <h4 class="card-title">{data.name}</h4>
-                   <h3><span class="badge badge-secondary">{data.price} грн</span></h3>
+                   <h4 class="card-title">{data.name}</h4>                      
                    {/* this.props.data.description */}
-                   {/* <p className="card-text">{data.description}</p> */}
+                   { price }
                    { desc }
-                   <h4 onClick = {this.incrementCounter}>
+                                
                         {/* clicked {this.state.count} */}
-                        <button onClick={onButtonClick} className="btn btn-primary btn-md float-right">
+                        <button onClick = {this.incrementCounter}   className="btn btn-primary btn-md  float-left">
+                            {'Buy'}
+                        </button>
+                   
+                    <button onClick={onButtonClick} className="btn btn-info btn-md float-right">
                             {isOpen ? 'close' : 'open'}
                         </button>
-                    </h4>
                    {/* <a href="#" className="btn btn-primary" onClick={onButtonClick}>{data.price} грн</a> */}
- 
                 </div>
              </div>
           </div>
@@ -48,17 +50,23 @@ class TableRow extends PureComponent {
     }
 
 
+
     incrementCounter = () =>{
-      const itemId =  this.props.data.id
       this.setState({
-          count: this.state.count + 1
-      })
-      console.log('id - ', itemId ,' count - ',this.state.count);
+         count: this.state.count + 1,
+     })
+      const itemId =  this.props.data.id
+      console.log('id - ', itemId ,' count - ',this.state.count)
   }
 
    descrHeight = (str) =>{
     return (str.length<=100)? 'auto' : '250px'
    }
+   
+   hasSpecialPrice = (price) =>{
+      return (price===null)? false : true
+   }
+
  }
 
  export default TableRow
