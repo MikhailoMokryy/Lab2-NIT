@@ -8,12 +8,14 @@ class TableRow extends PureComponent {
 
 
       this.state = {
-          count: 1
+          count: 1,
+          item: null,
+          itemId: null
       }
   }
 
     render() {
-      const {data, isOpen, onButtonClick} = this.props
+      const {data, isOpen, onButtonClick, onCartClick} = this.props
 
       let descrStr = data.description
       const desc = isOpen && <p className="card-text" style={{height: this.descrHeight(descrStr)}}>{descrStr}</p>
@@ -21,22 +23,18 @@ class TableRow extends PureComponent {
       const price = this.hasSpecialPrice(data.special_price)?<h3><span class="badge badge-danger">{data.special_price} грн</span>
       <h4><span class="badge badge-secondary "><del>{data.price} грн </del> </span></h4></h3>:<h3><span class="badge badge-secondary">{data.price} грн</span></h3>
 
-
-      //  <span class="badge badge-secondary"><del>{data.price}</del> </span>    
-      return ( 
+      return (      
           <div className="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-      
              <div className="card">              
-                <img className="card-img-top mycard_img" src={data.image_url} alt="Card image cap" />              
+                <img className="card-img-top mycard_img" src={data.image_url} alt={data.name}/>              
                 <div className="card-body">
                    <h4 class="card-title">{data.name}</h4>                      
                    {/* this.props.data.description */}
                    { price }
-                   { desc }
-                                
+                   { desc }                               
                         {/* clicked {this.state.count} */}
-                        <button onClick = {this.incrementCounter}   className="btn btn-primary btn-md  float-left">
-                            {'Buy'}
+                        <button   onClick={onCartClick}      className="btn btn-primary btn-md  float-left">
+                           {'Buy'}                          
                         </button>
                    
                     <button onClick={onButtonClick} className="btn btn-info btn-md float-right">
@@ -49,14 +47,14 @@ class TableRow extends PureComponent {
        );
     }
 
-
+    
+    
 
     incrementCounter = () =>{
       this.setState({
          count: this.state.count + 1,
+         
      })
-      const itemId =  this.props.data.id
-      console.log('id - ', itemId ,' count - ',this.state.count)
   }
 
    descrHeight = (str) =>{

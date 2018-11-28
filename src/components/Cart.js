@@ -1,32 +1,38 @@
 import React from 'react'
+import {reactLocalStorage} from 'reactjs-localstorage'
 
-class Cart extends React.PureComponent {
+
+class Cart extends React.Component {
 
 
     constructor(props) {
-        super(props) 
-        
+        super(props)
+
         this.state = {
-          cardItems: []  ,
-          quantity: null,
-          cartItemId: 1488
-      }
+            isCardOpen: false  
+        }
 
     }
 
-
+   
     render() {
-        const {quantity} = this.props;
-   //console.log('eee ',this.state.cardItems);
-       return (
-                <form className="form-inline mt-2 mt-md-0 mr-10">
-                   <button  className="btn float-right   btn-success" type="submit">Cart({quantity})</button>
-                   
-                </form>
-            
-       );
+        const { cartItem, counter } = this.props;
+
+
+        return (          
+         <div  onClick={() => { this.props.isOpen(this.state.isCardOpen) }}  className="cart_container">
+                <button  onClick={this.onCartClick}  className="btn btn-default float-right bg-success" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Cart <span className="badge badge-light"> {counter}</span>
+                </button>            
+        </div>   
+        );
     }
- }
 
-
- export default Cart
+    
+    onCartClick = () =>{
+        if(this.props.cartItem!==null){
+        this.state.isCardOpen? this.setState({isCardOpen:false}):this.setState({isCardOpen:true})       
+    }
+}
+}
+export default Cart
