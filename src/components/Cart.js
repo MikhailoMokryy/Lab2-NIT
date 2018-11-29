@@ -38,7 +38,7 @@ class Cart extends React.Component {
     handleSubmit = event => {
         // this.post()
         event.preventDefault()
-         axios.post('http://nit.tron.net.ua/api/order/add',this.post()).then(
+         axios.post('https://nit.tron.net.ua/api/order/add',this.post()).then(
              this.setState({success:true})
          )
              
