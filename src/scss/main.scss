@@ -1,6 +1,7 @@
 $bgcolor: rgb(109, 80, 133);
 $headercolor: #02341a;
-$color: #c0c0d2;
+$snow: #F2F2F2;
+
 
 
 *{
@@ -10,16 +11,58 @@ $color: #c0c0d2;
    user-select: none;
 }
 
+
+
 .maincontainer {
-  
-  margin: 100px auto 20px auto;
+  display: flex;
+  margin: 10px auto 20px auto;
 }
 
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
 
-.cart_list{
-   position: absolute;
-    margin: 10px auto;
-   clear: right;
+.navbar-brand {
+  padding-left: 1rem;
+  transition: all ease-out 0.3s;
+
+}
+
+.navbar-brand:hover{
+  color: lightgrey;
+  }
+
+.Cart {
+  min-width: 10rem;
+  padding: 1rem;
+  color: $snow;
+  text-align: right;
+  overflow: hidden;
+  max-height: 2.82rem;
+  transition: all ease-out 0.3s;
+  
+  .Title, .Title::before {
+    font-weight: 700;
+    display: inline;
+  }
+  
+  .Title::before {
+    content: 'Open ';
+  }
+}
+
+.Cart-Open {
+  max-height: 500px;
+  box-shadow: 0 0.2rem 3rem black;
+  
+    .Title::before {
+    content: 'Close ';
+  }
 }
 
 

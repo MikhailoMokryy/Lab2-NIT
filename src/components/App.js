@@ -7,7 +7,6 @@ import Table from './Table'
  
 class App extends React.Component {
 
-
    render() {
       return (
             <Table />       

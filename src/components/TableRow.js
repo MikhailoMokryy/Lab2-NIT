@@ -33,8 +33,8 @@ class TableRow extends PureComponent {
                    { price }
                    { desc }                               
                         {/* clicked {this.state.count} */}
-                        <button   onClick={onCartClick}      className="btn btn-primary btn-md  float-left">
-                           {'Buy'}                          
+                        <button   onClick={this.addToCart}    className="btn btn-primary btn-md  float-left">
+                       {'Buy'}                     
                         </button>
                    
                     <button onClick={onButtonClick} className="btn btn-info btn-md float-right">
@@ -48,7 +48,10 @@ class TableRow extends PureComponent {
     }
 
     
-    
+    addToCart =() => {
+      this.props.addToCart(this.props.data);
+    }
+
 
     incrementCounter = () =>{
       this.setState({
