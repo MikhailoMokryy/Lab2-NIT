@@ -49,14 +49,14 @@ class TableRow extends PureComponent {
 
     
     addToCart =() => {
+      this.props.onCartClick()
       this.props.addToCart(this.props.data);
     }
 
 
     incrementCounter = () =>{
       this.setState({
-         count: this.state.count + 1,
-         
+         count: this.state.count + 1,  
      })
   }
 

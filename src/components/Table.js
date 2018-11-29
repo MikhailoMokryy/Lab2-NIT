@@ -1,9 +1,9 @@
 import React from 'react'
 import TableRow from './TableRow'
-import Cart from './Cart'
+import Footer from './Footer'
 import Header from './Header'
 import axios from 'axios'
-
+import {reactLocalStorage} from 'reactjs-localstorage'
 
 class Table extends React.PureComponent {
 
@@ -17,13 +17,16 @@ class Table extends React.PureComponent {
          count: 0,
          found: false
          }
-      }
+      } 
+
+     
 
        componentDidMount() {
          axios.get(`https://nit.tron.net.ua/api/product/list/category/0`).then(res => {
             const shopItems = res.data;
             this.setState({ items : shopItems });
           })   
+         
        }
       
 
@@ -41,18 +44,25 @@ class Table extends React.PureComponent {
             if (cartItem.name == item.name) {
            
                   found =  true
-              
               cartItem.quantity++;
+              reactLocalStorage.setObject(cartItem.id,cartItem)
+              console.log(cartItem) 
               return cartItem;
             } else {
+              reactLocalStorage.setObject(cartItem.id,cartItem)
+              console.log(cartItem) 
               return cartItem;
             }
           })
-          if (!found) { updatedCart.push({id: item.id, name: item.name, price: item.price, quantity: 1}) }  
+          if (!found) { 
+            reactLocalStorage.setObject( item.id,{id: item.id, name: item.name, price: item.price, quantity: 1})
+            updatedCart.push({id: item.id, name: item.name, price: item.price, quantity: 1})   
+          }  
+
           this.setState({
             cart: updatedCart
-
           })
+         // console.log(updatedCart)  
         }
 
 
@@ -78,15 +88,14 @@ class Table extends React.PureComponent {
         
        return (
          <div>
-            {/* updateCartData = {this.updateCartData } */}
-            <Header  updateData={this.updateData} cart={this.state.cart} counter={this.state.count}/>
+            <Header  updateData={this.updateData} cart={this.state.cart} counter={this.state.count} />
           <main role="main" className="container maincontainer">
           
           <div className="row flex justify-content-around align-content-center align-items-center">
- 
              {shopElements}
           </div>
          </main>
+         <Footer/>
          </div> 
        );
     } 
@@ -100,7 +109,8 @@ class Table extends React.PureComponent {
       this.setState({
          count: this.state.count + 1,
      })
-   }
+    // reactLocalStorage.setObject('counter',this.state.count)
+   } 
 
  }
 

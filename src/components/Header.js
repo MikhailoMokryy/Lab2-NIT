@@ -35,27 +35,26 @@ class Header extends React.PureComponent {
 
    render() {
       const { cart, counter } = this.props
-
+      console.log(this.props)
       const shopElements = this.state.categories.map((item) => 
-      <li className="navbar-nav nav-item ml-2 mr-2" onClick={() => { this.props.updateData(item.id), console.log('-id-',item.id)}} >
+      <div className="navbar-nav  categories ml-4 mr-4" onClick={() => { this.props.updateData(item.id), console.log('-id-',item.id)}} >
       <a  className="nav-link"   href="#"> { item.name } </a>
-      </li>
+      </div>
       )
 
      
       return (
          <div>        
-            {/* <nav className="navbar  navbar-dark bg-dark fixed-top">
-               <a className="navbar-brand" href="#"><p className="h1">Rusetka</p></a> */}
-
-               <nav className='navbar  navbar-dark bg-dark'>
-               <a className="navbar-brand nav-link" href="#"  onClick={() => { this.props.updateData(0)}}><p className="h1">Rusetka</p></a>  
-               <div className="row justify-content-start  align-items-start flex ">      
+           
+               <nav className='navbar fixed-top navbar-dark bg-dark'>
+               <a className="navbar-brand" href="#"  onClick={() => { this.props.updateData(0)}}><p className="h1">Rusetka</p></a>  
+              
+               <div className="row flex nav-it align-content-start align-items-start ">
                { shopElements}     
-               </div>          
-                     <Cart isOpen={this.isOpen} cart={ cart} counter={counter} />            
-                   
+               </div>  
+                              
             </nav>     
+            <Cart isOpen={this.isOpen} cart={ cart} counter={counter}/>  
          </div>
       );
    }
