@@ -18,7 +18,7 @@ class TableRow extends React.Component {
       const {data, isOpen, onButtonClick, onCartClick} = this.props
 
       let descrStr = data.description
-      const desc = isOpen && <p className="card-text" style={{height: this.descrHeight(descrStr)}}>{descrStr}</p>
+      const desc = isOpen && <p className="card-text " style={{height: this.descrHeight(descrStr)}}>{descrStr}</p>
 
       const price = this.hasSpecialPrice(data.special_price)?<h3><span class="badge badge-danger">{data.special_price} грн</span>
       <h4><span class="badge badge-secondary "><del>{data.price} грн </del> </span></h4></h3>:<h3><span class="badge badge-secondary">{data.price} грн</span></h3>
