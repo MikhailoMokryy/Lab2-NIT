@@ -9,7 +9,6 @@
     "watch": "webpack --watch",
     "start": "webpack-dev-server --hot --open ",
     "deploy": "gh-pages -d build"
-
   },
   "author": "Mokryy Mike",
   "license": "ISC",
@@ -20,7 +19,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
-    "jquery": "^1.9.1",
+    "jquery": "^1.12.4",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "popper.js": "^1.14.5",

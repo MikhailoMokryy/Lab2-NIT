@@ -62,16 +62,19 @@ class Table extends React.PureComponent {
           this.setState({
             cart: updatedCart
           })
-         // console.log(updatedCart)  
         }
 
 
+        componentWillUpdate(){
+          axios.get(`https://nit.tron.net.ua/api/product/list/category/`+this.state.categoryId).then(res => {
+            const shopItems = res.data;
+            this.setState({ items : shopItems });
+          })
+
+        }
+
     render() {
 
-      axios.get(`https://nit.tron.net.ua/api/product/list/category/`+this.state.categoryId).then(res => {
-         const shopItems = res.data;
-         this.setState({ items : shopItems });
-       })
 
      
       const shopElements = this.state.items.map((item, i) => 
@@ -109,7 +112,6 @@ class Table extends React.PureComponent {
       this.setState({
          count: this.state.count + 1,
      })
-    // reactLocalStorage.setObject('counter',this.state.count)
    } 
 
  }

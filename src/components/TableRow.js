@@ -1,7 +1,7 @@
-import React, {PureComponent} from 'react'
-import Cart from './Cart'
+import React from 'react'
 
-class TableRow extends PureComponent {
+
+class TableRow extends React.Component {
    
    constructor(props) {
       super(props)
