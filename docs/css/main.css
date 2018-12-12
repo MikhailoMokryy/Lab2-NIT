@@ -30,6 +30,10 @@
   height: 250px;
   overflow: scroll; }
 
+.card-el {
+  height: 150px;
+  overflow: scroll; }
+
 .info {
   margin: 0 auto; }
 

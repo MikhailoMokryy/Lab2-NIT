@@ -36,15 +36,19 @@ class Header extends React.PureComponent {
    
 
    render() {
-      const { cart, counter } = this.props
+      const { cart, counter,itemsCounter } = this.props
+
+   
+
       console.log(this.props)
       const shopElements = this.state.categories.map((item) => 
-      <li className="nav-item " onClick={() => {  this.props.updateData(item.id), console.log('-id-',item.id)}}>
+      <li className="nav-item " onClick={() => {   this.props.updateData(item.id), console.log('-id-',item.id)}}>
       <a  className="nav-link"   href="#"> { item.name } </a>
        </li>
       )
    
       return (
+         
          <div>
       <nav className="navbar fixed-top  navbar-expand-md navbar-dark bg-dark">
         <a className="navbar-brand" href="#"  onClick={() => { this.props.updateData(0)}}><p className="h1">Rusetka</p></a> 
@@ -57,14 +61,14 @@ class Header extends React.PureComponent {
       { shopElements}    
 
         </ul>
-        <Cart isOpen={this.isOpen} cart={ cart} counter={counter}/>
+   
+        <Cart clearCart={this.props.clearCart}  isOpen={this.isOpen} cart={ cart} counter={counter} itemsCounter={itemsCounter}/>
        </div>
        </nav>
         </div>
         );     
       
-   }
-   
+   } 
 }
 
 export default Header

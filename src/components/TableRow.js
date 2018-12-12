@@ -50,7 +50,7 @@ class TableRow extends React.Component {
     
     addToCart =() => {
       this.props.onCartClick()
-      this.props.addToCart(this.props.data);
+      this.props.addToCart(this.props.data)
     }
 
 

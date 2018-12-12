@@ -14,6 +14,7 @@ class Table extends React.PureComponent {
          openDescriptionId: null,
          categoryId: 0,
          cart: [],
+         itemsCount: 0 ,
          count: 0,
          found: false
          }
@@ -24,16 +25,28 @@ class Table extends React.PureComponent {
        componentDidMount() {
          axios.get(`https://nit.tron.net.ua/api/product/list/category/0`).then(res => {
             const shopItems = res.data;
-            this.setState({ items : shopItems });
-          })   
+            this.setState({ items : shopItems , itemsCount: shopItems.length});
+            console.log('====',this.state.itemsCount)
+          })  
+         
          
        }
       
 
-       updateData = (id) => {
-         console.log('-categoryId-',id)    
-         this.setState({ categoryId: id })  
+       updateData = (id) => { 
+         
+          axios.get(`https://nit.tron.net.ua/api/product/list/category/`+id).then(res => {
+           const shopItems = res.data;
+           this.setState({ items : shopItems });
+          }) 
        } 
+
+       clearCart = () => { 
+         console.log('clear cart')
+        this.setState({
+          cart: []
+        })
+     } 
 
 
        addToCart = (item) => {
@@ -65,13 +78,7 @@ class Table extends React.PureComponent {
         }
 
 
-        componentWillUpdate(){
-          axios.get(`https://nit.tron.net.ua/api/product/list/category/`+this.state.categoryId).then(res => {
-            const shopItems = res.data;
-            this.setState({ items : shopItems });
-          })
 
-        }
 
     render() {
 
@@ -91,7 +98,7 @@ class Table extends React.PureComponent {
         
        return (
          <div>
-            <Header  updateData={this.updateData} cart={this.state.cart} counter={this.state.count} />
+            <Header clearCart={this.clearCart} updateData={this.updateData} cart={this.state.cart} counter={this.state.count} itemsCounter ={this.state.itemsCount} />
           <main role="main" className="container maincontainer">
           
           <div className="row flex justify-content-around align-content-center align-items-center">
